@@ -13,4 +13,8 @@
       <ProjectReference Include="..\otec.egory.api.dto\otec.egory.api.dto.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Controllers" />
+    </ItemGroup>
+
 </Project>
