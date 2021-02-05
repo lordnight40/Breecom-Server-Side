@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "otec.egory.api", "otec.egory.api\otec.egory.api.csproj", "{27234707-EC87-488E-87E6-57D6EE53099C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "otec.egory.api.dto", "otec.egory.api.dto\otec.egory.api.dto.csproj", "{CDADCE7F-9C22-4C14-A107-70A746FC403C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "otec.egory.api.core", "otec.egory.api.core\otec.egory.api.core.csproj", "{37E37353-B3A0-46A9-BDE3-4CF0C3FDB347}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{27234707-EC87-488E-87E6-57D6EE53099C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27234707-EC87-488E-87E6-57D6EE53099C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27234707-EC87-488E-87E6-57D6EE53099C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDADCE7F-9C22-4C14-A107-70A746FC403C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDADCE7F-9C22-4C14-A107-70A746FC403C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDADCE7F-9C22-4C14-A107-70A746FC403C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDADCE7F-9C22-4C14-A107-70A746FC403C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37E37353-B3A0-46A9-BDE3-4CF0C3FDB347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37E37353-B3A0-46A9-BDE3-4CF0C3FDB347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37E37353-B3A0-46A9-BDE3-4CF0C3FDB347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37E37353-B3A0-46A9-BDE3-4CF0C3FDB347}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

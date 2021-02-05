@@ -5,7 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\otec.egory.api.core\otec.egory.api.core.csproj" />
+      <ProjectReference Include="..\otec.egory.api.dto\otec.egory.api.dto.csproj" />
     </ItemGroup>
 
 </Project>
