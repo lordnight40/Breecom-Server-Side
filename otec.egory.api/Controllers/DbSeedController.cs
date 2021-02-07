@@ -17,6 +17,10 @@ namespace otec.egory.api.Controllers
             this.context = context;
         }
         
+        /// <summary>
+        /// Метод для наполнения тестовыми данными
+        /// </summary>
+        /// <returns>ничего</returns>
         [HttpGet]
         public IActionResult Index()
         {
@@ -66,7 +70,7 @@ namespace otec.egory.api.Controllers
                             Id = Guid.NewGuid(),
                             Brand = brand,
                             Name = $"Shoes of {brand.Name} model {i}",
-                            Price = Math.Round((decimal)random.NextDouble()) * 1000,
+                            Price = random.Next(2000, 20000),
                             CreatedAt = DateTime.Now,
                             CreatedBy = Guid.Empty,
                             IsActive = true
