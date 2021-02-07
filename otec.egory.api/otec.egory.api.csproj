@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>b1419593-8f78-40d2-a831-0384896989c1</UserSecretsId>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -9,14 +10,16 @@
       <DocumentationFile>bin\Debug\net5.0\otec.egory.api.xml</DocumentationFile>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\otec.egory.api.xml</DocumentationFile>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\otec.egory.api.core\otec.egory.api.core.csproj" />
       <ProjectReference Include="..\otec.egory.api.dto\otec.egory.api.dto.csproj" />
     </ItemGroup>
 

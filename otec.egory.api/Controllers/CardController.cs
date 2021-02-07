@@ -36,7 +36,7 @@ namespace otec.egory.api.Controllers
         /// <response code="500">Описание ошибки</response>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<CardResponseModel>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status500InternalServerError)]
         public IActionResult Index()
         {
             try
@@ -45,10 +45,12 @@ namespace otec.egory.api.Controllers
                     .Where(product => product.IsActive)
                     .Select(product => new CardResponseModel
                     {
+                        Id = product.Id,
                         Name = product.Name,
                         Price = product.Price,
                         Brand = new BrandResponseModel
                         {
+                            Id = product.Brand.Id,
                             Info = product.Brand.Info,
                             Name = product.Brand.Name
                         }
@@ -93,10 +95,12 @@ namespace otec.egory.api.Controllers
                     .Where(product => product.IsActive && product.Id == id)
                     .Select(product => new CardResponseModel
                     {
+                        Id = product.Id,
                         Name = product.Name,
                         Price = product.Price,
                         Brand = new BrandResponseModel
                         {
+                            Id = product.Brand.Id,
                             Info = product.Brand.Info,
                             Name = product.Brand.Name
                         }

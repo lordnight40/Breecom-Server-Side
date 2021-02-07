@@ -33,15 +33,13 @@ namespace otec.egory.api
                 
                 c.IncludeXmlComments(xmlPath);
             });
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<DataContext>();
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+
+            app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "otec.egory.api v1"));
 
@@ -50,6 +48,12 @@ namespace otec.egory.api
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(options =>
+            {
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+                options.AllowAnyOrigin();
+            });
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
