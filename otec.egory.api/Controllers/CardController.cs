@@ -1,7 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using otec.egory.api.dto;
 using otec.egory.api.IO;
+using otec.egory.api.IO.Base;
 using otec.egory.api.IO.Reponse;
 
 namespace otec.egory.api.Controllers
@@ -22,10 +27,48 @@ namespace otec.egory.api.Controllers
         /// </summary>
         /// <returns>Массив объектов</returns>
         [HttpGet]
-        public IActionResult Index()
+        public JsonResult Index()
         {
-            var cards = _context.Products.ToArray();
-            return new JsonResult(new CardsResponse { Success = true, Error = null, Data = cards });
+            try
+            {
+                var cards = _context.Products
+                    .Where(product => product.IsActive)
+                    .Select(product => new CardResponseModel
+                    {
+                        Name = product.Name,
+                        Price = product.Price,
+                        Brand = new BrandResponseModel
+                        {
+                            Info = product.Brand.Info,
+                            Name = product.Brand.Name
+                        }
+                    })
+                    .AsEnumerable();
+
+                var response = new SuccessResultWithData<IEnumerable<CardResponseModel>>
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Data = cards
+                };
+            
+                return new JsonResult(cards);
+            }
+            catch (Exception e)
+            {
+                var response = new ErrorResult()
+                {
+                    StatusCode = HttpStatusCode.InternalServerError,
+                    Error = e.InnerException?.Message ?? e.Message
+                };
+                
+                return new JsonResult(response);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Index(Guid id)
+        {
+            return Ok();
         }
     }
 }

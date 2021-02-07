@@ -3,22 +3,26 @@ using otec.egory.api.dto.Entities;
 
 namespace otec.egory.api.dto
 {
-    public sealed class DataContext : DbContext
+    public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
-                .HasOne<Brand>(product => product.Brand)
-                .WithMany(brand => brand.Products);
+            modelBuilder.Entity<Brand>()
+                .HasMany(brand => brand.Products)
+                .WithOne(product => product.Brand)
+                .HasForeignKey(product => product.BrandId);
+
+            modelBuilder.Entity<Brand>()
+                .Navigation(brand => brand.Products)
+                .UsePropertyAccessMode(PropertyAccessMode.Property);
         }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
     }
 }
