@@ -25,10 +25,7 @@ namespace otec.egory.api.Controllers
         public IActionResult Index()
         {
             try
-            {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
-                
+            {   
                 if (context.Products.Any())
                 {
                     var toRemove = context.Products.AsEnumerable();

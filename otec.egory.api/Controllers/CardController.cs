@@ -36,7 +36,7 @@ namespace otec.egory.api.Controllers
         /// <response code="500">Описание ошибки</response>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<CardResponseModel>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status500InternalServerError)]
         public IActionResult Index()
         {
             try

@@ -5,9 +5,14 @@ namespace otec.egory.api.dto
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        public DataContext()
         {
             Database.EnsureCreated();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Filename=LocalStorage.sqlite");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -18,7 +23,6 @@ namespace otec.egory.api.dto
                 .HasForeignKey(product => product.BrandId);
 
             modelBuilder.Entity<Brand>()
-                .Navigation(brand => brand.Products)
                 .UsePropertyAccessMode(PropertyAccessMode.Property);
         }
 
