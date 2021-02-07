@@ -10,7 +10,8 @@ namespace otec.egory.api.dto.Entities
         public decimal Price { get; set; }
         [Required]
         public string Name { get; set; }
+        public Guid BrandId { get; set; }
         
-        public virtual Brand Brand { get; set; }
+        public Brand Brand { get; set; }
     }
 }
